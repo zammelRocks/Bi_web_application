@@ -12,7 +12,7 @@ This mini web application is about drawing charts and getting accurate data from
  streamlit_lottie 
  streamlit_option_menu 
  PIL
- pands
+ pandas
  
  #### run the project : 
  2- type the following command in terminal : python -m streamlit run main.py
