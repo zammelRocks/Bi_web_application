@@ -3,7 +3,7 @@
 This mini web application is about drawing charts and getting accurate data from a public dataSet through an API.
 
  ################ Follow instruction to run the project properly :#########################
- make sure to install the following python libraries in case you haven't yet use them :
+ **Make sure to install the following python libraries in case you haven't yet use them :**
  
  #### Libraries:
  1- use command in ur local Terminal : pip install <library_name>
