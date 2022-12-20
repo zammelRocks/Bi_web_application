@@ -30,6 +30,9 @@ def retrieve_fields_from_json(data_from_api):
 def visualize_null_values(dataFrame):
     print(dataFrame.isnull())
 
+def pourcentage(per,total):
+    pourcentage = per * 100 / total
+    return f"{pourcentage} %"
 
 def eliminating_null_values(dataFrame):
     for col in dataFrame.columns:

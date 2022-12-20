@@ -30,6 +30,28 @@ if __name__ == '__main__':
     df = ETL.eliminating_null_values(dataFrame=df)
     # print(df)
 
+    #************* insights **********************
+    # ************ insight 1 : mail validation ************
+    taille_tab = len(df)
+    nbr_mail_valid = ETL.valid_mail_by_regex(df)
+    pr_mail = ETL.pourcentage(nbr_mail_valid, taille_tab)
+
+    # ************ insight 2 : Links validation ************
+
+    nbr_links_valid = ETL.valid_link_by_regex(df)
+    pr_links = ETL.pourcentage(nbr_links_valid, taille_tab)
+
+    # ************ insight 3 : Home delivery ************
+    nbr_Home_delivery = ETL.Home_Delivery_count(df)
+    per_delivery = ETL.pourcentage(nbr_Home_delivery, taille_tab)
+
+    products_list = [['number of entreprises proceeding with Home delivery ', nbr_Home_delivery, per_delivery],
+                     ['number of entreprises having websites ', nbr_links_valid, pr_links],
+                     ['number of businesses using mail', nbr_Home_delivery, per_delivery]]
+
+    df_insights = ETL.pd.DataFrame(products_list, columns=['insights', 'number', 'pourcentage'])
+    # print(df_insights)
+
 
 
 
@@ -37,7 +59,7 @@ if __name__ == '__main__':
     ########## Frontend Visualization ##############
     ################################################
 
-    st.set_page_config(page_title="Test technique", page_icon=":tada", layout="wide")
+    st.set_page_config(page_title="Test technique",page_icon=":tada", layout="wide")
 
     # lottie_coding
     lottie_coding = ETL.load_lottieur1("https://assets1.lottiefiles.com/packages/lf20_uzvwjpkq.json")
@@ -112,3 +134,7 @@ if __name__ == '__main__':
     nbr_business_per_domain = df.groupby(['type_de_commerce'])['nom_du_commerce'].count()
     nbr_frame = nbr_business_per_domain.to_frame()
     st.line_chart(nbr_frame)
+
+    st.subheader('chart 4: Table of insights ')
+    #useful Marketing related data
+    st.dataframe(df_insights)
